@@ -1,0 +1,398 @@
+a
+{
+	color: #33ccff;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #33ffff;
+}
+
+div.option 
+{
+    width: 100%;
+    border: none; 
+    height: 18px;
+    margin: 0px;
+    padding: 1px;
+    background-color: transparent;
+    vertical-align: middle;
+    text-align: left;
+    cursor: default;
+}
+
+div.selectedOption 
+{
+    background-color: #CFFFFF;
+}
+
+.tundra .dijitTabPaneWrapper {
+	background: #fff;
+	border-width: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.tundra .dijitTab {
+	line-height: normal;
+	margin-right: 0px;	/* space between one tab and the next in top/bottom mode */
+	padding: 2px;
+	border: none;
+}
+
+.tundra .dijitTabContainerTop-tabs 
+{
+	border: none;
+	margin-bottom: 0;
+	padding-left: 0px;
+	background-position: bottom;
+}
+
+.tundra .dijitTabContainerTop-tabs .dijitTab {
+	/* unselected (and not hovered/pressed) tab */
+	top: 0;
+	width: 218px;
+	border: none;
+	margin-bottom: -1px;	/* used for overlap */
+	text-align: center;
+	background-color: #e0e0e0;
+	font-weight: normal;
+	color: #000000;
+}
+
+/* selected tab */
+.tundra .dijitTabContainerTop-tabs .dijitTabChecked {
+	border: none;
+	background-color: #7c7c7c;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.newSiteTabIcon 
+{
+    background-image: url('../images/plusIcon.png'); 
+	background-repeat: no-repeat;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+    padding: 1px;	
+}
+
+.editSiteTabIcon 
+{
+    background-image: url('../images/editIcon.png');
+	background-repeat: no-repeat;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+    padding: 1px;	
+}
+
+#leftContainer
+{
+    width: 440px;
+    height: 100%;
+    border: none;
+    overflow: visible;
+}
+
+#tabAddNewSite, #tabReviewSites
+{
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+    background-color: #7c7c7c;
+    overflow: hidden;
+}
+
+#panelSearchInput
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 400px;
+    height: 36px;
+    margin: 8px 20px 8px 20px;
+    background-image: url(../images/inputbg.png);
+    background-repeat: no-repeat;
+    overflow: visible;
+    z-index: 30;
+}
+
+.searchTitle
+{
+    color: #FFFFFF;
+    text-align: left;
+    font-weight: bold;
+    padding-top: 8px;
+    padding-left: 12px;
+    float: left;
+}
+
+.searchInput 
+{
+    width: 230px;
+    height: 21px; 
+    margin-top: 6px;
+    margin-left: 6px;
+    overflow: visible;
+    float: left;
+}
+
+#parcelSearchText 
+{
+    width: 224px;
+    height: 21px; 
+}
+
+#parcelSearchFilter
+{
+     width: 224px;
+     max-height: 160px;
+     background-color: #FFFFFF;
+     border: 2px solid #CFF;
+     overflow-x: hidden;
+     overflow-y: auto;
+     display: none;
+}
+
+#panelProcessSite
+{
+    margin-top: 52px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #FFFFFF;
+}
+
+#msgNoParcelInfo
+{
+    text-align: left;
+    font-weight: bold;
+    margin-left: 30px;
+    padding: 0px 20px 0px 20px;
+}
+
+#panelParcelInfo 
+{
+    margin-left: 30px;
+    padding: 0px 20px 0px 20px;
+}
+
+#panelAttachments 
+{
+    margin-top: 12px;
+}
+
+#paneTabArea
+{
+    position: absolute;
+    top: 0px;
+    width: 44px;
+    height: 100%;
+    background-color: #E0E0E0;
+    overflow: visible;
+    float: left;
+}
+
+#paneSiteArea
+{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#panelSiteInfo
+{
+    width: 360px;
+    margin-left: 44px;
+    padding: 12px 16px 0px 20px;
+    color: #FFFFFF;
+}
+
+.siteButtonPanel 
+{
+    width: 100%;
+    padding-top: 12px;
+    text-align: center;
+    display: none;
+}
+
+.siteButton_Red
+{
+    width: 236px;
+    height: 40px;
+    border: none;
+    margin-top: 8px;
+    background-color: transparent;
+    background-image: url(../images/buttonbg_red.png);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.siteButton_Cyan
+{
+    width: 236px;
+    height: 40px;
+    border: none;
+    margin-top: 8px;
+    background-color: transparent;
+    background-image: url(../images/buttonbg_cyan.png);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.siteButton_Blue
+{
+    width: 236px;
+    height: 40px;
+    border: none;
+    margin-top: 8px;
+    background-color: transparent;
+    background-image: url(../images/buttonbg_blue.png);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.siteButton_Red_Small
+{
+    width: 100px;
+    height: 30px;
+    border: none;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: transparent;
+    background-image: url(../images/buttonbg_red_small.png);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.siteButton_Blue_Small
+{
+    width: 100px;
+    height: 30px;
+    border: none;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: transparent;
+    background-image: url(../images/buttonbg_blue_small.png);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.siteButton_gray
+{
+    width: 236px;
+    height: 40px;
+    border: none;
+    margin-top: 8px;
+    background-color: transparent;
+    background-image: url(../images/buttonbg_gray.png);
+    background-repeat: no-repeat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.siteButton_active
+{
+    background-image: url(../images/buttonbg_active.png);
+}
+
+#mapHandlerHelpMsg
+{
+    margin: auto;
+    width: 236px;
+    height: 48px;
+    border: none;
+    margin-top: 4px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  
+    white-space: -pre-wrap;  
+    white-space: -o-pre-wrap;
+    font-size: 0.90em;
+    color: #CCCCCC;
+}
+
+.tab
+{
+    float: left;
+    width: 44px;
+    height: 40px;
+    color: #7c7c7c;
+    border-bottom-width: 1px;
+    border-bottom-color: #FFFFFF;
+    border-bottom-style: solid;
+    background-color: #E0E0E0;
+    white-space: nowrap;
+    position: relative;
+    cursor: pointer;
+}
+
+.tab_selected
+{
+    background-color: #88CC00;
+    color: #FFFFFF;
+}
+
+#saveSiteDialog
+{
+    margin: auto;
+    background-color: #dadada;
+    padding-bottom: 10px;
+    width: 420px;
+}
+
+#attachmentDialog
+{
+    margin: auto;
+    background-color: #dadada;
+    padding-bottom: 10px;
+    width: 400px;
+}
+
+.esriIdSubmit .dijitButtonNode, .esriIdCancel .dijitButtonNode
+{
+	width: 70px;
+	padding: 2px;
+}
+
+.esriErrorMsg
+{
+    display: none; 
+    color: white; 
+    background-color: #CC3333;
+    padding-top: 3px; 
+    padding-bottom: 3px;
+    text-align: center; 
+}
+
+.signingInLoader
+{
+    display: none; 
+    padding-top: 3px; 
+    padding-bottom: 3px;
+    text-align: center; 
+}
+
+.signinDialogMsg 
+{
+    white-space:pre-wrap;
+}
+
+.remindingMsg
+{
+    position: relative;
+    font-weight: bold;
+    color: #FF0000;
+    padding-left: 5px;
+    display: none;
+}
+

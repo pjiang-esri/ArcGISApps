@@ -1,0 +1,150 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+   <title>Sussex Site Visit</title>
+   <link rel="stylesheet" type="text/css" href="//serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/dojo/dijit/themes/tundra/tundra.css" />
+   <link rel="stylesheet" type="text/css" href="//serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/esri/dijit/css/Popup.css" />
+   <link rel="stylesheet" type="text/css" href="css/layout.css" />
+   <link rel="stylesheet" type="text/css" href="css/admin.css" />
+   <link rel="stylesheet" type="text/css" href="css/popup.css" />
+   <script type="text/javascript">
+      var djConfig = {
+         parseOnLoad: true
+      };
+    </script>
+   <script type="text/javascript" src="//serverapi.arcgisonline.com/jsapi/arcgis/?v=3.1compact"></script>
+   <script type="text/javascript" src="javascript/common.js"></script>
+   <script type="text/javascript" src="javascript/config.js"></script>
+   <script type="text/javascript" src="javascript/admin.js"></script>
+   <script type="text/javascript" src="javascript/query.js"></script>
+   <script type="text/javascript">
+      //dojo.require("esri.IdentityManager");
+      dojo.require("dijit.Dialog");
+
+      //Start to initialize application
+      dojo.addOnLoad(initApp);
+    </script>
+   <!--Social Media Links-->
+   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+</head>
+<body class="tundra">
+   <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline" gutters="false">
+      <!--Banner-->
+      <div id="banner" dojotype="dijit.layout.BorderContainer" gutters="false" region="top">
+         <!--Header-->
+         <div id="headerArea" dojotype="dijit.layout.BorderContainer" gutters="false" region="top">
+            <div id="countyLogo" dojotype="dijit.layout.ContentPane" region="left">
+               <a id="logoLink" href="http://www.sussex.nj.us/index.cfm" target="_blank">
+                  <img id="logoImage" src="images/logo.png" alt="Sussex County" title="Sussex County" /></a>
+            </div>
+            <div id="titleText" dojotype="dijit.layout.ContentPane" region="center">
+               <h1 id="title"></h1>
+               <p id="subtitle"></p>
+            </div>
+            <div id="linkArea" dojotype="dijit.layout.ContentPane" region="right">
+              <div id="social">
+                  <a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map</a>
+                  <span class='st_facebook'></span><span class='st_twitter'></span>
+               </div>
+               <div id="esriMap">
+                  <a id="esriLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home" /></a>
+               </div>
+            </div>
+         </div>
+         <!--/header-->
+      </div>
+      <!--/banner-->
+      <!--Content-->
+      <div id="content" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+         <div id="leftContainer" dojotype="dijit.layout.TabContainer" gutters="false" tabposition="top" region="left">
+            <div id="tabAddNewSite" dojotype="dijit.layout.ContentPane" iconClass="newSiteTabIcon" showTitle="false" title="New Site" selected="true">
+               <div id="panelSearchInput">
+                  <div class="searchTitle">Property Search:</div>
+                  <div class="searchInput">
+                     <input id="parcelSearchText" value="5 Spring Ln" type="text" onfocus="searchBoxFocus(this);" onkeypress="searchBoxKeypress(event);" onkeydown="searchBoxKeydown(event);" /><br />
+                     <div id="parcelSearchFilter" onkeydown="searchBoxKeydown(event);"></div>
+                  </div>
+                  <a href="javascript: findParcel();"><img id="imgSearchButton" src="images/go.png" alt="Search" title="Search" style="float: left;" /></a>
+               </div>
+               <div id="panelProcessSite">
+                  <span id="msgNoParcelInfo">No Parcel is Selected</span>
+                  <div id="panelParcelInfo"></div>
+                  <div id="panelSaveButton" class="siteButtonPanel">
+                     <button class='siteButton_Red_Small' title="Clear info" onclick='javascript: clearSiteInfoPanel();'>Clear</button>
+                     <button class="siteButton_Blue_Small" title="Save site" onclick="javascript: esri.show(dojo.byId('panelSaveSite'));">Save</button>
+                     <button id="btnMapClickHandler" class="siteButton_gray" onclick="javascript: toggleMapClickEvent(event);" title="Click to select more">Select More</button>
+                     <div id="mapHandlerHelpMsg">Press the button above then click on the map to select more parcels</div>
+                  </div>
+               </div>
+               <!--/processPanel-->
+            </div>
+            <!--tabAddNewSite-->
+            <div id="tabReviewSites" dojotype="dijit.layout.ContentPane" iconClass="editSiteTabIcon" showTitle="false" title="Change Site">
+               <div id="paneSiteArea">
+                  <div id="panelSiteInfo">
+                      <div id="panelParcelLayer"></div>
+                  </div>
+                  <div id="panelSiteButton" class='siteButtonPanel'>
+                  	<button class="siteButton_Cyan" title="Add attachments" onclick="javascript: esri.show(dojo.byId('panelUploadAttachment'));">Add Attachments</button>
+		               <button class="siteButton_Red" title="Delete this site" onclick="javascript: deleteCurrentSite();">Delete this Site</button>
+                     <!--<button class="siteButton_Red" onclick="javascript: changeSiteStatus('Inactive');">De-activate this Site</button>-->
+                     <!--<button class="siteButton_Red" onclick="javascript: changeSiteStatus('Active');">Re-activate this Site</button>-->
+                  </div>
+               </div>
+               <div id="paneTabArea"></div>
+            </div>
+         </div>
+         <!--/leftContainer-->
+         <!--Map Section-->
+         <div id="mapPane" dojotype="dijit.layout.ContentPane" region="center">
+            <div id="mapDiv"></div>
+         </div>
+         <!--mapPane-->
+      </div>
+      <!--/content-->
+   </div>
+   <div id="panelSaveSite"  class="dijitDialogPanel">
+      <div id="saveSiteDialog">
+         <div class="dialogHead">Save Dialog</div>
+         <div class="dialogItem">
+            Do you want to save the analysis results for this site?<br />
+            If yes, please input a File ID:</div>
+         <div class="dialogItem">
+            <input id="txtFileID" type="text" size="30" /><span id="saveReminder" class="remindingMsg">?</span></div>
+         <div class="dialogItem">
+            <span>and a description:</span>
+            <textarea id="txtSiteDesc" rows="4" cols="40"></textarea></div>
+         <div class="dialogItem">
+            <button style="background-color: #FFCCCC" onclick="javascript: saveSite(false);">Cancel</button>&nbsp;&nbsp;
+            <button style="background-color: #CCCCFF" onclick="javascript: saveSite(true);">Save</button>
+         </div>
+      </div>
+   </div>
+   <div id="panelUploadAttachment" class="dijitDialogPanel">
+      <div id="attachmentDialog">
+         <div class="dialogHead">Add Attachment</div>
+         <div class="dialogItem">Please specify a file, or a set of files:</div>
+         <div class="dialogItem">
+            <form id="uploadForm" dojoAttachPoint="uploadForm">
+               <input type="file" size="45" name='attachment' dojoAttachPoint="uploadField" />
+            </form>
+         </div>
+         <div class="dialogItem">
+            <button style="background-color: #FFCCFF" onclick="javascript: uploadAttachment(false);">Cancel</button>&nbsp;&nbsp;
+            <button style="background-color: #CCCCFF" onclick="javascript: uploadAttachment(true);">Upload</button>
+         </div>
+      </div>
+   </div>
+   <!--/main-->
+   <!--Loading Panel-->
+   <div id="loadingPanel" class="dijitDialogPanel">
+      <div id="loadingDialog">
+         <div class="dialogHead">Status</div>
+         <div id="loadingMsg" class="dialogItem">Loading maps from ArcGIS Online</div>
+         <img id="loadingImg" class="dialogItem" alt="" src="images/progressBar.gif" />
+      </div>
+   </div>
+</body>
+</html>
