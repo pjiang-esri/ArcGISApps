@@ -1,0 +1,166 @@
+a
+{
+    color: #003399;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #009999;
+}
+
+#paneTabArea
+{
+    height: 100%;
+    width: 44px;
+    padding: 0px;
+    background-color: #7c7c7c;
+    overflow: visible;
+    z-index: 30;
+}
+
+#paneSiteArea
+{
+    width: 420px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+#panelSiteInfo
+{
+    width: 360px;
+    padding: 20px 20px 0px 20px;
+}
+
+#panelAttachments 
+{
+    margin-top: 12px;
+}
+
+.tab
+{
+    float: left;
+    width: 44px;
+    height: 40px;
+    color: #EEEEEE;
+    border-bottom-width: 1px;
+    border-bottom-color: #FFFFFF;
+    border-bottom-style: solid;
+
+    white-space: nowrap;
+    position: relative;
+    cursor: pointer;
+}
+
+.tab_selected
+{
+    background-color: #88CC00;
+    color: #FFFFFF;
+}
+
+.siteMsg 
+{
+    font-weight: bold;
+    text-align: left;
+    margin-left: 8px;
+}
+
+.siteInfo 
+{
+    margin-left: 0px;
+}
+
+.layerHeader
+{
+    background-image: url(../images/layerbg.png);
+    background-repeat: no-repeat;
+    margin-top: 8px;
+    height: 30px;
+    width: 360px;
+    cursor: pointer;
+}
+
+.layerHeader_active
+{
+    background-image: url(../images/layerbg_on.png);
+    background-repeat: no-repeat;
+    margin-top: 8px;
+    height: 30px;
+    width: 360px;
+    cursor: default;
+}
+
+.layerTitle
+{
+    position: relative;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.0em;
+    float: left;
+    left: 6px;
+    top: 4px;
+}
+
+.subLayerTitle
+{
+    color: #666666;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.subLayerInfo 
+{
+    color: #666666;
+    padding-left: 40px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  
+    white-space: -pre-wrap;  
+    white-space: -o-pre-wrap;
+}
+
+.flagSubLayerTitle
+{
+    color: #990000;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.flagSubLayerInfo 
+{
+    color: #990000;
+    padding-left: 40px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  
+    white-space: -pre-wrap;  
+    white-space: -o-pre-wrap;
+}
+
+.errorSubLayerTitle
+{
+    color: #990099;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.errorSubLayerInfo 
+{
+    color: #990099;
+    padding-left: 40px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  
+    white-space: -pre-wrap;  
+    white-space: -o-pre-wrap;
+}
+
+.printButton
+{
+    width: 32px;
+    height: 32px;
+    border: none;
+    padding: 0px;
+    background-color: transparent;
+    background-image: url(../images/print.png);
+    background-repeat: no-repeat;
+}

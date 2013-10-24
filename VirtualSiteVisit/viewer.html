@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+   <title>Sussex Site Visit</title>
+   <link rel="stylesheet" type="text/css" href="//serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/dojo/dijit/themes/tundra/tundra.css" />
+   <link rel="stylesheet" type="text/css" href="//serverapi.arcgisonline.com/jsapi/arcgis/3.1/js/esri/dijit/css/Popup.css" />
+   <link rel="stylesheet" type="text/css" href="css/layout.css" />
+   <link rel="stylesheet" type="text/css" href="css/viewer.css" />
+   <link rel="stylesheet" type="text/css" href="css/popup.css" />
+   <script type="text/javascript">
+      var djConfig = {
+         parseOnLoad: true
+      };
+    </script>
+   <script type="text/javascript" src="//serverapi.arcgisonline.com/jsapi/arcgis/?v=3.1compact"></script>
+   <script type="text/javascript" src="javascript/common.js"></script>
+   <script type="text/javascript" src="javascript/config.js"></script>
+   <script type="text/javascript" src="javascript/viewer.js"></script>
+   <script type="text/javascript" src="javascript/query.js"></script>
+   <script type="text/javascript">
+      //Start to initialize application
+      dojo.addOnLoad(initApp);
+    </script>
+   <!--Social Media Links-->
+   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+</head>
+<body class="tundra">
+   <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline" gutters="false">
+      <!--Banner-->
+      <div id="banner" dojotype="dijit.layout.BorderContainer" gutters="false" region="top">
+         <!--Header-->
+         <div id="headerArea" dojotype="dijit.layout.BorderContainer" region="top">
+            <div id="countyLogo" dojotype="dijit.layout.ContentPane" region="left">
+               <a id="logoLink" href="http://www.sussex.nj.us/index.cfm" target="_blank">
+                  <img id="logoImage" src="images/logo.png" alt="Sussex County" title="Sussex County" /></a>
+            </div>
+            <div id="titleText" dojotype="dijit.layout.ContentPane" region="center">
+               <h1 id="title"></h1>
+               <p id="subtitle"></p>
+            </div>
+            <!--/titleText-->
+            <div id="linkArea" dojotype="dijit.layout.ContentPane" region="right">
+               <div id="social">
+                  <a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map</a>
+                  <span class='st_facebook'></span><span class='st_twitter'></span>
+               </div>
+               <div id="esriMap">
+                  <a id="esriLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home" title="Esri - Home" /></a></div>
+            </div>
+            <!--/logoArea-->
+            <div dojotype="dijit.layout.ContentPane" region="right">
+               <button id="printButton" class="printButton" disabled="disabled" onclick="printReport();" title="Print Report"></button>
+            </div>
+         </div>
+         <!--/header-->
+      </div>
+      <!--/banner-->
+      <!--Content-->
+      <div id="content" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+         <div id="paneTabArea" dojotype="dijit.layout.ContentPane" region="left"></div>
+         <!--/tabArea-->
+         <div id="paneSiteArea" dojotype="dijit.layout.ContentPane" region="left">
+            <div id="panelSiteInfo">
+               <div id="panelParcelLayer"></div>
+               <span style="overflow: hidden;">............................................................................................</span>
+               <div id="panelThemeLayers"></div>
+            </div>
+         </div>
+         <!--Map Section-->
+         <div id="mapPane" dojotype="dijit.layout.ContentPane" region="center">
+            <div id="mapDiv"></div>
+         </div>
+         <!--mapPane-->
+      </div>
+      <!--/content-->
+   </div>
+   <!--/main-->
+   <!--Loading Panel-->
+   <div id="loadingPanel" class="dijitDialogPanel">
+      <div id="loadingDialog">
+         <div class="dialogHead">Status</div>
+         <div id="loadingMsg" class="dialogItem">Loading maps from ArcGIS Online</div>
+         <img id="loadingImg" class="dialogItem" alt="" src="images/progressBar.gif" />
+      </div>
+   </div>
+</body>
+</html>

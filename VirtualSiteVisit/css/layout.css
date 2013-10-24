@@ -1,0 +1,340 @@
+﻿html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size: 1.0em;  
+}
+
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, th
+{  
+    font-weight: normal;
+    font-style: normal;
+}
+
+fieldset, img
+{
+    border: none;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+caption, th
+{
+    text-align: left;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td
+{
+    vertical-align: middle;
+    text-align:left;
+}
+
+td.head 
+{
+    font-weight: bold;
+}
+
+input 
+{
+    height: 20px;
+}
+
+ul, ol
+{
+    list-style: none;
+}
+
+ul.attachInfo
+{
+    margin-top: 4px;
+    margin-left: 20px;
+}
+
+li 
+{
+    padding-bottom: 4px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;  
+    white-space: -pre-wrap;  
+    white-space: -o-pre-wrap;
+}
+
+hr
+{
+    width: 100%;
+    height: 1px;
+    border: 0px;
+    padding: 0px;
+    margin-top: 6px;
+    background-color: #666;
+    color: #666;
+}
+
+g, v
+{
+    cursor: pointer;
+}
+
+#mainWindow
+{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=0);
+    -khtml-opacity: 0.0;
+    opacity: 0.0;
+}
+
+#banner
+{
+    width: 100%;
+    height: 105px;
+    background-color: #333;
+}
+
+#headerArea
+{
+    height: 105px;
+    padding: 16px 16px 4px 16px;
+}
+
+#countyLogo
+{
+    overflow: hidden;
+    margin-top: -6px;
+    padding-right: 8px;
+    vertical-align: middle;
+}
+
+#logoImage 
+{
+    width: 92px;
+    height: 92px;
+}
+
+#titleText 
+{
+    overflow: hidden;
+}
+
+#title
+{
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+#subtitle
+{
+    color: #fff;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+#linkArea
+{
+    width: 136px !important;
+    overflow: hidden;
+}
+
+#social
+{
+    float: right;
+    padding-bottom: 20px;
+}
+
+#esriMap
+{
+    float: right;
+    height: 32px;
+}
+
+#smLink
+{
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.90em;
+    text-decoration: none;
+    vertical-align: middle;
+    outline: none;
+}
+
+#smLink:hover
+{
+    text-decoration: underline;
+}
+
+#mapDiv
+{
+    background-color: #fff;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#baseMapGallery
+{
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+    font-size: 0.95em;
+    max-height: 448px;
+    padding: 4px;
+    width: 380px;
+}
+
+#loadingDialog
+{
+    margin: auto;
+    background-color: #dadada;
+    width: 300px;
+}
+
+.dijitDialogPanel 
+{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+    display: none;
+    z-index: 99;
+}
+
+.dialogHead
+{
+    background-color: #333;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+.dialogItem
+{
+    padding-top: 10px;
+    text-align: center;
+    padding: 4px;
+}
+
+.tundra
+{
+    z-index: 10;
+}
+
+.tundra .dijitSplitContainer-dijitContentPane, .tundra .dijitBorderContainer-dijitContentPane, .tundra .dijitBorderContainer, .tundra .dijitSplitterV, .tundra .dijitGutterV, .tundra .dijitSplitContainer-child, .tundra .dijitBorderContainer-child
+{
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.baseMapButton .dijitButtonNode
+{
+	/* enabled state - inner */
+	border: 1px solid transparent;
+	background: transparent;
+	margin: -24px -4px 0px 0px;
+	padding: 0px;
+	top: 0px;
+}
+
+.baseMapButtonHover .dijitButtonNode
+{
+	/* hover state - inner */
+    border: 1px dotted #999;
+	background: transparent;
+}
+
+/*Use a white arrow for the dropdown*/
+.baseMapButton .dijitArrowButtonInner {
+  background-image: url("../images/buttonArrows.png");
+  background-position: -53px center !important;
+  width: 12px;
+}
+
+.esriBasemapIcon 
+{
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/Basemap24.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 2px;
+}
+
+.infoHeader
+{
+    font-weight: bold;
+    text-align: left;
+}
+
+.tab:hover, .tab_navUp:hover, .tab_navDown:hover
+{
+    background-color: #88CC00;
+}
+
+.tab img
+{
+    top: 8px;
+    left: 44px;
+    position: absolute;
+    visibility: hidden;
+}
+
+.tabText
+{
+    font-family: Georgia, Times, serif;
+    font-size: 25px;
+    text-align: center;
+    padding: 4px 0px 4px 0px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tab_navUp 
+{
+    float: left;
+    width: 44px; 
+    height: 18px;  
+    text-align: center;
+    border-bottom-width: 1px;
+    border-bottom-color: #FFFFFF;
+    border-bottom-style: solid;
+    position: relative;
+}
+
+.tab_navDown
+{
+    float: left;
+    width: 44px; 
+    height: 18px; 
+    text-align: center;
+    position: relative;
+}

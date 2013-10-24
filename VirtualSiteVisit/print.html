@@ -1,0 +1,256 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+   <title>Virtual Site Visit - Site Report</title>
+   <style type="text/css">
+      html, body 
+      {
+         margin: 0px; 
+         padding: 0px; 
+         font-size: 1.0em; 
+         font-family: Calibri, Arial, Helvetica, sans-serif; 
+         overflow-x: hidden; 
+         overflow-y: auto; 
+      }
+                  
+      #reportArea
+      {
+         overflow: hidden;
+         width: 680px;
+         height: auto;
+         padding: 4px;
+         margin: 4px;
+      }
+      
+      #title
+      {
+         font-size: 1.4em;
+         font-weight: bold;
+         text-align: center;
+         padding: 4px;
+      }
+      
+      #mapDiv
+      {
+         height: 600px;
+         width: 672px; /* 96 DPI x 7 inches */
+         border: 1px solid #CCC;
+      }
+      
+      #parcelInfo
+      {
+         overflow: hidden;
+         margin-top: 12px;
+         margin-left: 8px;
+         width: 672px;
+      }
+      
+      #siteReport
+      {
+         overflow: hidden;
+         margin-top: 16px;
+         width: 672px;
+      }
+      
+      #panelAttachments
+      {
+         margin-top: 12px;
+      }
+      
+      ul, ol
+      {
+         list-style: none;
+         margin: 0px;
+         padding: 0px;
+      }
+      
+      ul.attachInfo
+      {
+         margin-top: 4px;
+         margin-left: 20px;
+      }
+      
+      li
+      {
+         padding-bottom: 4px;
+         white-space: pre-wrap;
+         white-space: -moz-pre-wrap;
+         white-space: -pre-wrap;
+         white-space: -o-pre-wrap;
+      }
+      
+      .infoHeader
+      {
+         font-weight: bold;
+         text-align: left;
+      }
+      
+      .layerHeader, .layerHeader_active
+      {
+         background-color: #DDD;
+         margin-top: 8px;
+         height: 30px;
+      }
+      
+      .layerTitle
+      {
+         position: relative;
+         font-weight: bold;
+         text-decoration: none;
+         left: 8px;
+         top: 8px;
+      }
+      
+      .subLayerTitle
+      {
+         color: #666666;
+         padding-left: 20px;
+         font-weight: bold;
+      }
+      
+      .subLayerInfo
+      {
+         color: #666666;
+         padding-left: 40px;
+         white-space: pre-wrap;
+         white-space: -moz-pre-wrap;
+         white-space: -pre-wrap;
+         white-space: -o-pre-wrap;
+      }
+      
+      .flagSubLayerTitle
+      {
+         color: #990000;
+         font-weight: bold;
+         padding-left: 20px;
+      }
+      
+      .flagSubLayerInfo
+      {
+         color: #990000;
+         padding-left: 40px;
+         white-space: pre-wrap;
+         white-space: -moz-pre-wrap;
+         white-space: -pre-wrap;
+         white-space: -o-pre-wrap;
+      }
+      
+      .errorSubLayerTitle
+      {
+         color: #990099;
+         font-weight: bold;
+         padding-left: 20px;
+      }
+      
+      .errorSubLayerInfo
+      {
+         color: #990099;
+         padding-left: 40px;
+         white-space: pre-wrap;
+         white-space: -moz-pre-wrap;
+         white-space: -pre-wrap;
+         white-space: -o-pre-wrap;
+      }
+   </style>
+   <script type="text/javascript">
+      var djConfig = {
+         parseOnLoad: true
+      };
+    </script>
+   <script type="text/javascript" src="//serverapi.arcgisonline.com/jsapi/arcgis/?v=3.1compact"></script>
+   <script type="text/javascript">
+      dojo.require("esri.map");
+      dojo.require("esri.arcgis.utils");
+
+      var printMap = null;
+
+      function init() {
+         //Copy map
+         createMap(window.opener.config.webmap);
+
+         var viewerDoc = window.opener.document;
+         var panelParcelInfo = viewerDoc.getElementById('panelParcelLayer');
+         document.getElementById('parcelInfo').innerHTML = panelParcelInfo.innerHTML;
+
+         var panelSiteReport = viewerDoc.getElementById('panelThemeLayers');
+         document.getElementById('siteReport').innerHTML = panelSiteReport.innerHTML;
+      }
+
+      function createMap(mapId) {
+
+         var mapDeferred = esri.arcgis.utils.createMap(mapId, "mapDiv", {
+            mapOptions: { slider: false, nav: false, logo: false },
+            ignorePopups: true
+         });
+
+         mapDeferred.addCallback(function (response) {
+            
+            printMap = response.map;
+            printMap.disablePan();
+            printMap.disableMapNavigation();
+            printMap.disableScrollWheelZoom();
+
+            var itemData = response.itemInfo.itemData;
+            var operLayers = itemData.operationalLayers;
+
+            if (printMap.loaded) {
+               synchronizeMap(operLayers);
+            }
+            else {
+               dojo.connect(printMap, "onLoad", function () {
+                  synchronizeMap(operLayers);
+               });
+            }
+         });
+
+         mapDeferred.addErrback(function (error) {
+            alert("Unable to create map: " + " " + dojo.toJson(error.message));
+         });
+      }
+
+      function synchronizeMap(layers) {
+         var viewerMap = window.opener.map;
+         printMap.setExtent(viewerMap.extent);
+
+         dojo.forEach(layers, function (layer) {
+            if (layer.layerObject) {
+               var viewerLayer = viewerMap.getLayer(layer.layerObject.id)
+               if (viewerLayer) {
+                  layer.layerObject.setVisibility(viewerLayer.visible);
+                  layer.layerObject.setOpacity(viewerLayer.opacity);
+               }
+            }
+         });
+
+         if (viewerMap.graphics.graphics.length > 0) {
+            var graphic = viewerMap.graphics.graphics[0];
+            var clone = new esri.Graphic(graphic.toJson());
+            dojo.byId('title').innerHTML = "Site " + graphic.attributes['FILE_ID'] + " Report";
+
+            printMap.graphics.clear();
+            printMap.graphics.add(clone);
+         };
+      }
+
+      // For IE and Firefox, width and height must be set to 100% to display scrollbar
+      if (!dojo.isChrome) {
+         var styleSheet = document.styleSheets[0];
+         styleSheet.insertRule("html, body { width: 100%; height: 100%; }", 0);
+      }
+
+      dojo.addOnLoad(init);
+    </script>
+   <!--Social Media Links-->
+   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+</head>
+<body>
+   <div id="reportArea">
+      <div id="title">Site Report</div>
+      <div id="mapDiv"></div>
+      <div id="parcelInfo"></div>
+      <div id="siteReport"></div>
+   </div>
+</body>
+</html>
